@@ -26,11 +26,11 @@ def start():
             obsB = pm.Bernoulli("obs_B", p=p_B, observed=obs_B)
             
             step = pm.Metropolis()
-            trace = pm.sample(20000, step=step, chains=2, progressbar=True)
+            trace = pm.sample(100, step=step, chains=2, progressbar=True)
 
-        p_A_samples = np.concatenate(trace.posterior.p_A.data[:, 1000:])
-        p_B_samples = np.concatenate(trace.posterior.p_B.data[:, 1000:])
-        delta_samples = np.concatenate(trace.posterior.delta.data[:, 1000:])
+        p_A_samples = np.concatenate(trace.posterior.p_A.data[:, 50:])
+        p_B_samples = np.concatenate(trace.posterior.p_B.data[:, 50:])
+        delta_samples = np.concatenate(trace.posterior.delta.data[:, 50:])
         
         # Plot posteriors
         plt.figure(figsize=(12, 10))
